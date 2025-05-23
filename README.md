@@ -1,29 +1,28 @@
-# 📊 Analiza sprzedaży miesięcznej
+📊 Monthly Sales Analysis
+This repository contains an SQL query for performing monthly sales analysis based on data from the gold.fact_sales table.
 
-To repozytorium zawiera zapytanie SQL służące do analizy sprzedaży na poziomie miesięcznym na podstawie danych z tabeli `gold.fact_sales`.
+🧠 Purpose of the Query
+The query aims to provide a monthly sales summary including:
 
-## 🧠 Cel zapytania
+Total sales amount
 
-Celem zapytania jest uzyskanie miesięcznego podsumowania sprzedaży z uwzględnieniem:
+Number of unique customers
 
-- Łącznej wartości sprzedaży
-- Liczby unikalnych klientów
-- Łącznej liczby sprzedanych sztuk
+Total quantity sold
 
-## 🗃️ Tabela źródłowa: `gold.fact_sales`
+🗃️ Source Table: gold.fact_sales
+Description of the columns used in the query:
 
-**Opis kolumn użytych w zapytaniu:**
+Column	Type	Description
+order_date	DATE	Date when the order was placed
+sales_amount	DECIMAL	Value of a single sales transaction
+quantity	INT	Number of units sold
+customer_key	INT	Unique identifier for the customer
 
-| Kolumna        | Typ        | Opis                                      |
-|----------------|------------|-------------------------------------------|
-| order_date     | DATE       | Data złożenia zamówienia                  |
-| sales_amount   | DECIMAL    | Wartość pojedynczej transakcji sprzedaży  |
-| quantity       | INT        | Ilość sprzedanych sztuk                   |
-| customer_key   | INT        | Unikalny identyfikator klienta            |
-
-## 🧾 Zapytanie SQL
-
-```sql
+🧾 SQL Query
+sql
+Kopiuj
+Edytuj
 SELECT
   MONTH(order_date) as order_month,
   SUM(sales_amount) as total_sales,
